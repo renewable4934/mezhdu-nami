@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { StoryGrid } from "@/components/story-grid";
 import { SiteFooter } from "@/components/site-footer";
 import { ContactFormModal } from "@/components/contact-form";
 
-import { STORIES, CATEGORIES, getStoriesByCategory } from "@/data/stories";
+import { CATEGORIES, getStoriesByCategory } from "@/data/stories";
 
 export default function StoriesPage() {
   const [activeCategory, setActiveCategory] = useState<string>("all");

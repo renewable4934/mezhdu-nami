@@ -383,6 +383,7 @@ export default function HomePage() {
 
       {/* Global Contact Form Modal */}
       <ContactFormModal
+        key={selectedFormat}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         defaultFormat={selectedFormat}

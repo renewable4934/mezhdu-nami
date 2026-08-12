@@ -3,7 +3,6 @@
 import React, { useState, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2, Quote, Maximize2 } from "lucide-react";
 
 import { SiteHeader } from "@/components/site-header";

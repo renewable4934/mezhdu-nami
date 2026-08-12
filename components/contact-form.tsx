@@ -28,13 +28,7 @@ export function ContactFormModal({
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [isDemo, setIsDemo] = useState(true);
-
-  useEffect(() => {
-    if (defaultFormat) {
-      setFormData((prev) => ({ ...prev, format: defaultFormat }));
-    }
-  }, [defaultFormat]);
+  const isDemo = true;
 
   // Lock scroll when modal is open
   useEffect(() => {

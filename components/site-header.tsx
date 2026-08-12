@@ -6,6 +6,9 @@ import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { assetPath } from "@/lib/assets";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const homePath = basePath || "/";
+
 interface SiteHeaderProps {
   onOpenContactModal: (defaultFormat?: string) => void;
 }
@@ -70,7 +73,7 @@ export function SiteHeader({ onOpenContactModal }: SiteHeaderProps) {
   ) => {
     setIsMobileMenuOpen(false);
 
-    if (!href.startsWith("/#") || window.location.pathname !== "/") {
+    if (!href.startsWith("/#") || !isHomePath(window.location.pathname)) {
       return;
     }
 
@@ -79,7 +82,7 @@ export function SiteHeader({ onOpenContactModal }: SiteHeaderProps) {
 
     event.preventDefault();
     target.scrollIntoView({ behavior: "smooth", block: "start" });
-    window.history.pushState(null, "", href);
+    window.history.pushState(null, "", `${homePath}${href.slice(1)}`);
   };
 
   return (
@@ -198,4 +201,12 @@ export function SiteHeader({ onOpenContactModal }: SiteHeaderProps) {
       )}
     </>
   );
+}
+
+function isHomePath(pathname: string) {
+  const normalized = pathname.endsWith("/") && pathname !== "/"
+    ? pathname.slice(0, -1)
+    : pathname;
+
+  return normalized === homePath;
 }
